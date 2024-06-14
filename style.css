@@ -1,0 +1,111 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+:root {
+  --primary-color: #f6f7fb;
+  --white-color: #fff;
+  --black-color: #18191a;
+  --red-color: #e74c3c;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--primary-color);
+}
+body.dark {
+  --primary-color: #242526;
+  --white-color: #18191a;
+  --black-color: #fff;
+  --red-color: #e74c3c;
+}
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+.container .clock {
+  display: flex;
+  position: relative;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background: var(--white-color);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5), 0 25px 45px rgba(0, 0, 0, 0.5);
+}
+.clock label {
+  position: absolute;
+  transform: rotate(calc(var(--i) * (360deg / 12)));
+  inset: 20px;
+  background-color: none;
+  text-align: center;
+}
+.clock label span {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--black-color);
+
+  transform: rotate(calc(var(--i) * (-360deg / 12)));
+}
+.container .indicator {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+}
+.indicator::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: 2px solid var(--red-color);
+  background: var(--black-color);
+  border-radius: 50px;
+  z-index: 100;
+}
+.indicator .hand {
+  position: absolute;
+  height: 125px;
+  width: 4px;
+  background: var(--red-color);
+  bottom: 0;
+  border-radius: 20px;
+  transform-origin: bottom;
+}
+.hand.minute {
+  height: 118px;
+  width: 6px;
+  background: var(--black-color);
+  transform: rotate(45deg);
+}
+.hand.hour {
+  height: 80px;
+  width: 9px;
+  background: var(--black-color);
+  transform: rotate(180deg);
+}
+
+.mode-switch {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px;
+  background: var(--black-color);
+  color: var(--white-color);
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
